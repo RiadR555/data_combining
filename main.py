@@ -30,4 +30,7 @@ if __name__ == '__main__':
 
 
     # exporting the data
-    new_data.to_csv(r'/Users/riad_rustum/Desktop/end_ergebnisse.csv', encoding='UTF-8', sep=";", decimal=',')
+    new_data.to_csv(r'/Users/riad_rustum/Desktop/end_ergebnisse.csv',
+                    encoding='UTF-8',
+                    sep=";",
+                    decimal=',')
