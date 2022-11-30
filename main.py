@@ -21,16 +21,20 @@ if __name__ == '__main__':
 
     # pathes
     ask_path = search_for_file_path()
+    #path_test = pl2.Path("/Users/riad_rustum/Desktop/test")
     path_combine = pl2.Path(ask_path)
 
     # combining the data
-    dfs = [pd.read_csv(p, encoding='UTF-8') for p in path_combine.glob('*.csv')]
-    new_data = pd.concat(dfs)
+    dfs = [pd.read_csv(p, encoding='UTF-8', sep=';') for p in path_combine.glob('*.csv')]
+    names = ["A", "B", "C"]
 
+    new_data = pd.concat(dfs, keys=names)
+    new_data = new_data.reset_index(level=1, drop=True).rename_axis('File').reset_index()
 
 
     # exporting the data
     new_data.to_csv(r'/Users/riad_rustum/Desktop/end_ergebnisse.csv',
                     encoding='UTF-8',
                     sep=";",
-                    decimal=',')
+                    decimal=',',
+                    index=False)
